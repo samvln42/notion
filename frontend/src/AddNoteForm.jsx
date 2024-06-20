@@ -20,9 +20,9 @@ const AddNoteForm = () => {
     e.preventDefault();
 
     try {
-      // Replace 'http://localhost:8000' with your Django API endpoint
       const response = await axios.post(
-        "http://localhost:8000/api/goodsnote/",
+        `${import.meta.env.API_DJANGO}
+        /api/goodsnote/`,
         formData
       );
       console.log(response.data); // Handle the response as need

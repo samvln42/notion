@@ -9,7 +9,7 @@ const Note = () => {
 
   const addNote = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/note/", {
+      const response = await fetch(import.meta.env.API_DJANGO + "/api/note/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +34,7 @@ const Note = () => {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/note/");
+      const response = await fetch(import.meta.env.API_DJANGO + "/api/note/");
       if (response.ok) {
         setNotes(await response.json());
       } else {

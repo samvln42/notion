@@ -10,8 +10,8 @@ const GoodsNotes = () => {
   const addNote = async () => {
     try {
       const payload = { storeID, goodsID, userID, content };
-      console.log('Request Payload:', payload);
-      const response = await fetch("http://localhost:8000/api/notes/", {
+      console.log("Request Payload:", payload);
+      const response = await fetch(import.meta.env.API_DJANGO + "/api/notes/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const GoodsNotes = () => {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/notes/");
+      const response = await fetch(import.meta.env.API_DJANGO + "/api/notes/");
       if (response.ok) {
         setNotes(await response.json());
       } else {

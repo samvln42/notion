@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from "react";
 
 const Notes = () => {
-    const [notes, setNotes] = useState([]);
-    const [title, setTitle] = useState("");
-    const [content, setContent] = useState("");
-    const [storeId, setStoreId] = useState("");
-    const [goodsId, setGoodsId] = useState("");
-    const [userId, setUserId] = useState(""); 
+  const [notes, setNotes] = useState([]);
+  const [title, setTitle] = useState("");
+  const [content, setContent] = useState("");
+  const [storeId, setStoreId] = useState("");
+  const [goodsId, setGoodsId] = useState("");
+  const [userId, setUserId] = useState("");
 
   const addNote = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/note/", {
+      const response = await fetch(import.meta.env.API_DJANGO + "/api/note/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -23,9 +23,9 @@ const Notes = () => {
         setNotes([...notes, newNote]);
         setTitle("");
         setContent("");
-        setStoreId("")
-        setGoodsId("")
-        setUserId("")
+        setStoreId("");
+        setGoodsId("");
+        setUserId("");
       } else {
         console.error("Failed to add note");
       }
@@ -36,7 +36,7 @@ const Notes = () => {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch("http://localhost:8000/api/note/");
+      const response = await fetch(import.meta.env.API_DJANGO + "/api/note/");
       if (response.ok) {
         setNotes(await response.json());
       } else {
